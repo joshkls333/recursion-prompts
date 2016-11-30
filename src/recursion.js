@@ -59,12 +59,13 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-  var sum = n;
   if ( n === 0){
     return 0;
   } else if ( n < 0){
+    var sum = n + 1;
     return sum += sumBelow(n + 1)
   } else {
+    var sum = n -1;
     return sum += sumBelow(n-1);
   }
 };
@@ -72,8 +73,8 @@ var sumBelow = function(n) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
-  console.log ("x: ", x);
-  console.log("y: ", y);
+  // console.log("x: ", x);
+  // console.log("y: ", y);
 
   if(x < y){
 //    console.log("result: " + result);
