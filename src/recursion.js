@@ -52,16 +52,18 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  var num;
-  num = Math.round(n / 2);
-//  console.log("num: ", num);
-  if(num === 2 || n === 2 || n === 0){
-    return true;
-  } else if ( num === 1 || num === 3){
-    return false;
-  } else {
-    return isEven(num);
-  }
+  // var num;
+  // num = (n / 2);
+  // console.log("num: ", num);
+  // if(num === 2 || n === 2 || n === 0){
+  //   return true;
+  // } else if ( num === 1 || num === 3){
+  //   return false;
+  // } else {
+  //   return isEven(num);
+  // }
+  return n % 2 === 0;
+
 };
 
 // 5. Sum all integers below a given integer.
@@ -102,6 +104,15 @@ var range = function(x, y) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  if(exp === 0){
+    return 1;
+  } else if (exp === 1){
+    return base;
+  } else if ( exp < 0) {
+    return 1 / (base * exponent(base, Math.abs(exp + 1)));
+  } else {
+    return base * exponent(base, exp -1);
+  }
 };
 
 // 8. Determine if a number is a power of two.
