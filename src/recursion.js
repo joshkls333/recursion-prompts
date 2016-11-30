@@ -120,10 +120,23 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if( n === 1){
+    return true;
+  } else if ((n > 1 && n < 2) || n === 0){
+    return false;
+  } else {
+    return powerOfTwo(n/2);
+  }
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
+
+  var newString = "";
+
+//  console.log(newString);
+//  newString = string.charAt(string.length-1).concat(reverse(string.slice(0,string.length-1)));
+
 };
 
 // 10. Write a function that determines if a string is a palindrome.
@@ -141,6 +154,21 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 var multiply = function(x, y) {
+
+  // these next two test cases fail because don't result in negative number
+  if ( y < 0 && x > 0){
+    return  multiply(x, -y);
+  } else if  (x < 0 && y > 0) {
+    return  multiply(-x, y);
+
+
+  } else if ( x === 0 || y === 0){
+    return 0;
+  } else if (x < 0 && y < 0){
+    return multiply( -x, -y);
+  } else {
+    return x + multiply(x, y - 1);
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
@@ -195,6 +223,13 @@ var rMap = function(array, callback) {
 // countKeysInObj(testobj, 'r') // 1
 // countKeysInObj(testobj, 'e') // 2
 var countKeysInObj = function(obj, key) {
+  for(var keys in obj){
+    if(keys instanceof Object){
+      return countKeysInObj(keys);
+    } else {
+      return 1;
+    }
+  }
 };
 
 // 22. Write a function that counts the number of times a value occurs in an object.
@@ -223,6 +258,15 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
+  if(n < 0){
+    return null;
+  } else if(n === 0){
+    return 0;
+  } else if (n <= 2){
+    return 1;
+  } else {
+    return nthFibo(n-2) + nthFibo(n-1);
+  }
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
